@@ -11,7 +11,7 @@ import fr.xebia.lawn.Position;
 import fr.xebia.mowitnow.enumerations.Command;
 import fr.xebia.mowitnow.enumerations.Orientation;
 
-public class Mower extends Observable {
+public class Mower extends Observable implements Mowable {
 
 	private static final Logger LOG = Logger.getLogger(Mower.class);
 
@@ -48,7 +48,7 @@ public class Mower extends Observable {
 		notifyObservers();
 	}
 
-	private void moveForward(Lawn lawn) {
+	public void moveForward(Lawn lawn) {
 		Position position = getNextPosition();
 		if (lawn.contains(position) && !lawn.getCell(position).isOccupied()) {
 			lawn.getCell(this.position).setOccupied(false);
