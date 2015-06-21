@@ -1,6 +1,18 @@
 # mowitnow
 Xebia's Mow it now technical project
 
+###Installation and running notes
+    clone the repo
+    mvn install
+
+###Usage
+    java -jar MowitNow.jar 
+
+###Options are :
+
+    ** -c ** || **--charset** to specify a charset
+    ** -i ** || **--input** to specify an input file otherwise command should be entered via console
+
 La société MowItNow a décidé de développer une tondeuse à gazon automatique, destinée aux 
 surfaces rectangulaires.
 
@@ -23,7 +35,7 @@ conserve son orientation et traite la commande suivante.
 On assume que la case directement au Nord de la position (x, y) a pour coordonnées (x, y+1).
 Pour programmer la tondeuse, on lui fournit un fichier d'entrée construit comme suit :
 >La première ligne correspond aux coordonnées du coin supérieur droit de la pelouse, celles 
-...du coin inférieur gauche sont supposées être (0,0)
+du coin inférieur gauche sont supposées être (0,0)
 
 La suite du fichier permet de piloter toutes les tondeuses qui ont été déployées. Chaque 
 tondeuse a deux lignes la concernant :
