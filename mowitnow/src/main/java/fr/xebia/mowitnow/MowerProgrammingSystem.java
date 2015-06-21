@@ -37,7 +37,7 @@ public class MowerProgrammingSystem implements Observer {
 	}
 	
 	/**
-	 * Execute mowers command
+	 * Execute mowers commands
 	 */
 
 	public void execute() {

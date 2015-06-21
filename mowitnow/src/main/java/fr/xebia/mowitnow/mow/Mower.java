@@ -38,21 +38,32 @@ public class Mower extends Observable implements Mowable {
 		return id;
 	}
 
+	/**
+	 * Change the mower's orientation to its right 
+	 */
 	public void turnRight() {
 		orientation = orientation.getRightOrientation();
 		changeAndNotify();
 	}
 
+	/**
+	 * Change the mower's orientation to its left 
+	 */
 	public void turnLeft() {
 		orientation = orientation.getLeftOrientation();
 		changeAndNotify();
 	}
-
+	/**
+	 * Notity all the observers
+	 */
 	private void changeAndNotify() {
 		setChanged();
 		notifyObservers();
 	}
 
+	/**
+	 * Advance the mower one cell forward depending on its orientation
+	 */
 	public void moveForward(Lawn lawn) {
 		Position position = getNextPosition();
 		if (lawn.contains(position) && !lawn.getCell(position).isOccupied()) {
@@ -63,6 +74,10 @@ public class Mower extends Observable implements Mowable {
 		}
 	}
 
+	/**
+	 * 
+	 * @return Position : the next position to be reached if accessible
+	 */
 	private Position getNextPosition() {
 		Position position = null;
 		switch (orientation) {
@@ -84,17 +99,27 @@ public class Mower extends Observable implements Mowable {
 		return position;
 	}
 
+	/**
+	 * Mow the current position
+	 * @param lawn : The lawn to mow
+	 */
 	private void mow(Lawn lawn) {
 		lawn.getCell(this.position).setMowed(true);
 		lawn.getCell(position).setOccupied(true);
 	}
 
-	public void startMowing(Lawn lawn, Queue<Command> right) {
-		Objects.requireNonNull(right);
+	/**
+	 * Start executing the commands list
+	 * @param lawn : Lawn to move on
+	 * @param commands : List of commands to be executed
+	 */
+	
+	public void startMowing(Lawn lawn, Queue<Command> commands) {
+		Objects.requireNonNull(commands);
 		Objects.requireNonNull(lawn);
 		LOG.debug("Starting Mowing programmation...");
 		mow(lawn);
-		for (Command cmd : right) {
+		for (Command cmd : commands) {
 			switch (cmd) {
 			case Avance:
 				moveForward(lawn);
