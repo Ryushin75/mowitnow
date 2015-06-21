@@ -7,10 +7,10 @@ import java.util.Queue;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fr.xebia.lawn.Lawn;
-import fr.xebia.lawn.Position;
 import fr.xebia.mowitnow.enumerations.Command;
 import fr.xebia.mowitnow.enumerations.Orientation;
+import fr.xebia.mowitnow.lawn.Lawn;
+import fr.xebia.mowitnow.lawn.Position;
 import fr.xebia.mowitnow.mow.Mower;
 
 public class MowerTest {

@@ -22,12 +22,12 @@ import org.apache.log4j.Logger;
 
 import com.google.common.base.Splitter;
 
-import fr.xebia.lawn.Lawn;
-import fr.xebia.lawn.Position;
 import fr.xebia.mowitnow.MowerProgrammingSystem;
 import fr.xebia.mowitnow.Settings;
 import fr.xebia.mowitnow.enumerations.Command;
 import fr.xebia.mowitnow.enumerations.Orientation;
+import fr.xebia.mowitnow.lawn.Lawn;
+import fr.xebia.mowitnow.lawn.Position;
 import fr.xebia.mowitnow.mow.Mower;
 
 /*

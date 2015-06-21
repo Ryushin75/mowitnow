@@ -1,4 +1,4 @@
-package fr.xebia.lawn;
+package fr.xebia.mowitnow.lawn;
 
 /**
  * 

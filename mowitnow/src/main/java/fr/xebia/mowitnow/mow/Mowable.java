@@ -1,6 +1,6 @@
 package fr.xebia.mowitnow.mow;
 
-import fr.xebia.lawn.Lawn;
+import fr.xebia.mowitnow.lawn.Lawn;
 
 public interface Mowable {
 	public void turnRight();

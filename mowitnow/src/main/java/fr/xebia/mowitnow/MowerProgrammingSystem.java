@@ -8,8 +8,8 @@ import java.util.Queue;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.log4j.Logger;
 
-import fr.xebia.lawn.Lawn;
 import fr.xebia.mowitnow.enumerations.Command;
+import fr.xebia.mowitnow.lawn.Lawn;
 import fr.xebia.mowitnow.mow.Mower;
 
 /**

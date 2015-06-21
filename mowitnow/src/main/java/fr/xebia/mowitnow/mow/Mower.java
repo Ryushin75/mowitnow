@@ -6,10 +6,10 @@ import java.util.Queue;
 
 import org.apache.log4j.Logger;
 
-import fr.xebia.lawn.Lawn;
-import fr.xebia.lawn.Position;
 import fr.xebia.mowitnow.enumerations.Command;
 import fr.xebia.mowitnow.enumerations.Orientation;
+import fr.xebia.mowitnow.lawn.Lawn;
+import fr.xebia.mowitnow.lawn.Position;
 
 /**
  * 
