@@ -1,5 +1,7 @@
 package fr.xebia.mowitnow;
 
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 
 import com.beust.jcommander.JCommander;
@@ -25,8 +27,9 @@ public class MowItNow {
 			}
 		} catch (ParameterException e) {
 			LOG.error(e.getMessage());
-			e.printStackTrace();
 			jc.usage();
-		}
+		} catch (IOException e) {
+			LOG.error(e.getMessage());
+		} 
 	}
 }

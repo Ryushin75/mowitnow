@@ -1,6 +1,7 @@
 package fr.xebia.lawn;
 
 
+
 /**
  * 
  * @author aymen
@@ -49,5 +50,13 @@ public class Position {
 	}
 	public Position moveSouth(){
 		return new Position(x,y-1);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Position))
+			return false;
+		Position pos = (Position) obj;
+		return x == pos.getX() && y == pos.getY();
 	}
 }

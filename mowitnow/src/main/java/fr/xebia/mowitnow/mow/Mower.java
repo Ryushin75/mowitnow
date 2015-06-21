@@ -104,7 +104,8 @@ public class Mower extends Observable {
 				throw new IllegalArgumentException("Unvalid argument" + cmd);
 			}
 		}
-		LOG.debug("Mowing programmation ended, Mower with id "+id+" is now at position : "+ toString());
+		LOG.debug("Mowing programmation ended, Mower with id " + id
+				+ " is now at position : " + toString());
 	}
 
 	@Override
@@ -114,5 +115,17 @@ public class Mower extends Observable {
 
 	public Position getPosition() {
 		return position;
+	}
+	public Orientation getOrientation() {
+		return orientation;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (!(obj instanceof Mower))
+			return false;
+		Mower mow = (Mower) obj;
+		return id == mow.getId() && position.equals(mow.getPosition())
+				&& orientation.equals(mow.getOrientation());
 	}
 }

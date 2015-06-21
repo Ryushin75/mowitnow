@@ -13,7 +13,6 @@ import fr.xebia.mowitnow.enumerations.Command;
 import fr.xebia.mowitnow.mow.Mower;
 
 public class MowerProgrammingSystem implements Observer {
-
 	private final static Logger LOG = Logger
 			.getLogger(MowerProgrammingSystem.class);
 
@@ -42,5 +41,13 @@ public class MowerProgrammingSystem implements Observer {
 	public void update(Observable o, Object arg) {
 		Mower mow = (Mower) o;
 		LOG.debug(mow.toString());
+	}
+	
+	public Lawn getLawn() {
+		return lawn;
+	}
+
+	public List<Pair<Mower, Queue<Command>>> getPairs() {
+		return pairs;
 	}
 }

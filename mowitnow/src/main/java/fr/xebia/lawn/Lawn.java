@@ -35,4 +35,20 @@ public class Lawn {
 		return 0 <= position.getX() && position.getX() <= xLimit
 				&& 0 <= position.getY() && position.getY() <= yLimit;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Lawn ))
+    		return false;
+		Lawn lawn = (Lawn) obj;
+		return xLimit == lawn.getxLimit() && yLimit == lawn.getyLimit();
+	}
+
+	public int getGridSize() {
+		return grid.length;
+	}
+	
+	public LawnCell[][] getGrid(){
+		return grid;
+	}
 }

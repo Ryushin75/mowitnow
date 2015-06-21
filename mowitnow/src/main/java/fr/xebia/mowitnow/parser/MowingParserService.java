@@ -61,8 +61,8 @@ public class MowingParserService {
 					"Error while parsing mower init value, expected: 'xPosition yPosition orientation'; got: '"
 							+ line + "']");
 			List<String> field = Splitter.on(SEPARATOR).splitToList(line);
-		    int x = Integer.valueOf(field.get(0)) - 1;
-		    int y = Integer.valueOf(field.get(1)) - 1;
+		    int x = Integer.valueOf(field.get(0));
+		    int y = Integer.valueOf(field.get(1));
 		    Orientation orientation = Orientation.getoOrientationFromCode(field.get(2));
 		    return new Mower(mowerID++, new Position(x, y), orientation);
 		};
@@ -79,12 +79,12 @@ public class MowingParserService {
 			  return commands;
 		};
 	}
-	public MowerProgrammingSystem parseSettings(Settings settings) {
+	public MowerProgrammingSystem parseSettings(Settings settings) throws IOException, FileNotFoundException{
 		parseCharset(settings.getCharsetName());
 		return parseInput(settings.getInputFileName());
 	}
 
-	private MowerProgrammingSystem parseInput(String inputFileName) {
+	private MowerProgrammingSystem parseInput(String inputFileName) throws IOException,FileNotFoundException {
 		if (StringUtils.isNotEmpty(inputFileName)) {
 			return parseFile(inputFileName);
 		} else {
@@ -98,27 +98,28 @@ public class MowingParserService {
 				charset = Charset.forName(charsetName);
 			} catch (IllegalCharsetNameException e) {
 				LOG.error("Unvalid charset name : '" + charsetName + "'");
-				System.exit(1);
+				throw e;
 			} catch (UnsupportedCharsetException e) {
-				LOG.error("Unsopported charset name : '" + charsetName + "'");
-				System.exit(1);
+				LOG.error("Unsupported charset name : '" + charsetName + "'");
+				throw e;
 			}
 		} else {
 			charset = Charset.defaultCharset();
 		}
 	}
 
-	private MowerProgrammingSystem parseFile(String inputFileName) {
+	private MowerProgrammingSystem parseFile(String inputFileName) throws IOException,FileNotFoundException{
 		try (InputStream in = new FileInputStream(inputFileName);) {
 			return parse(in);
 		} catch (FileNotFoundException e) {
-			LOG.error("File  with name '" + inputFileName + "'+not found at ");
+			LOG.error("File with name '" + inputFileName + "' not found");
 			LOG.error(e.getMessage());
+			throw e;
 		} catch (IOException e) {
 			LOG.error("Error while parsing '" + inputFileName + "'");
 			LOG.error(e.getMessage());
+			throw e;
 		}
-		return null;
 	}
 
 	private MowerProgrammingSystem parse(InputStream in) {
@@ -131,12 +132,21 @@ public class MowingParserService {
 			//Parse Mowers and their commands
 			while (sc.hasNextLine()) {		
 				Mower mower = mowerParser.parse(sc.nextLine());
+				if(!sc.hasNextLine()){
+					throw new IllegalStateException("A Mower is supposed to have an associated command");
+				}
 				Queue<Command> commands = commandParser.parse(sc.nextLine());
 				if(lawn.contains(mower.getPosition())){
 					pairs.add(new ImmutablePair<Mower, Queue<Command>>(mower,commands));
+				}else{
+					LOG.error("Mower position is not contained in the lawn");
 				}
 			}
 			return new MowerProgrammingSystem(lawn, pairs);
 		}
+	}
+	
+	public Charset getCharset() {
+		return charset;
 	}
 }
