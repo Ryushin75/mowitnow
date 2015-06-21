@@ -35,4 +35,9 @@ public class LawnCell {
 	public void setOccupied(boolean occupied) {
 		this.occupied = occupied;
 	}
+	
+	@Override
+	public String toString() {
+		return position.toString() + " isMowed = " + isMowed +" isOccupied = "+ isOccupied();
+	}
 }

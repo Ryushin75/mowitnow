@@ -19,7 +19,7 @@ public class Position {
 
 	@Override
 	public String toString() {
-		return x + " " + y;
+		return "["+x + " " + y+"]";
 	}
 
 	public int getX() {
@@ -53,10 +53,27 @@ public class Position {
 	}
 	
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + x;
+		result = prime * result + y;
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
 		if (!(obj instanceof Position))
 			return false;
-		Position pos = (Position) obj;
-		return x == pos.getX() && y == pos.getY();
+		Position other = (Position) obj;
+		if (x != other.x)
+			return false;
+		if (y != other.y)
+			return false;
+		return true;
 	}
 }

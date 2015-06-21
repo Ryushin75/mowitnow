@@ -58,9 +58,9 @@ public class MowingParserServiceTest {
 		MowerProgrammingSystem mowerProgrammingSystem = mowingParserService
 				.parseSettings(settings);
 		Assert.assertEquals(new Lawn(5, 5), mowerProgrammingSystem.getLawn());
-		Assert.assertEquals(5, mowerProgrammingSystem.getLawn().getGridSize());
-		Assert.assertEquals(5,
-				mowerProgrammingSystem.getLawn().getGrid()[0].length);
+		//We include the rows 0
+		Assert.assertEquals((5+1)*(5+1), mowerProgrammingSystem.getLawn().getGridSize());
+
 	}
 	
 	@SuppressWarnings("unused")
@@ -126,5 +126,22 @@ public class MowingParserServiceTest {
 		MowerProgrammingSystem mowerProgrammingSystem = mowingParserService
 				.parseSettings(settings);
 		Assert.assertEquals(0, mowerProgrammingSystem.getPairs().size());
+	}
+	
+	@Test
+	public void testCompleteInputFile() throws FileNotFoundException, IOException{
+		MowingParserService mowingParserService = new MowingParserService();
+		Settings settings = new Settings();
+		settings.setInputFileName(this.getClass().getResource("/testInput.mow")
+				.getPath());
+		MowerProgrammingSystem mowerProgrammingSystem = mowingParserService
+				.parseSettings(settings);
+		Assert.assertEquals(2, mowerProgrammingSystem.getPairs().size());
+		Assert.assertEquals(new Lawn(5, 5), mowerProgrammingSystem.getLawn());
+		Mower mower1 = mowerProgrammingSystem.getPairs().get(0).getLeft();
+		Mower mower2 = mowerProgrammingSystem.getPairs().get(1).getLeft();
+		
+		Assert.assertTrue(mowerProgrammingSystem.getLawn().getCell(mower1.getPosition()).isOccupied());
+		Assert.assertTrue(mowerProgrammingSystem.getLawn().getCell(mower2.getPosition()).isOccupied());
 	}
 }

@@ -51,7 +51,7 @@ public class Mower extends Observable {
 	private void moveForward(Lawn lawn) {
 		Position position = getNextPosition();
 		if (lawn.contains(position) && !lawn.getCell(position).isOccupied()) {
-			lawn.getCell(position).setOccupied(false);
+			lawn.getCell(this.position).setOccupied(false);
 			this.position = position;
 			mow(lawn);
 			changeAndNotify();

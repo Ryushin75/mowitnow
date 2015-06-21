@@ -50,4 +50,11 @@ public class MowerProgrammingSystem implements Observer {
 	public List<Pair<Mower, Queue<Command>>> getPairs() {
 		return pairs;
 	}
+	
+	public void printMowersPositions(){
+		for (Pair<Mower, Queue<Command>> pair : pairs) {
+			Mower mower = pair.getLeft();
+			System.out.println(mower);
+		}
+	}
 }

@@ -1,20 +1,22 @@
 package fr.xebia.lawn;
 
+import java.util.HashMap;
+
 
 public class Lawn {
 	private final int xLimit;
 	private final int yLimit;
-
-	private final LawnCell[][] grid;
+	private final HashMap<Position, LawnCell> cellMap;
 
 	public Lawn(int x, int y) {
 		this.xLimit = x;
 		this.yLimit = y;
 
-		grid = new LawnCell[xLimit][yLimit];
-		for (int i = 0; i < xLimit; i++) {
-			for (int j = 0; j < yLimit; j++) {
-				grid[i][j] = new LawnCell(i, j);
+		cellMap = new HashMap<>();
+		for (int i = 0; i <= xLimit; i++) {
+			for (int j = 0; j <= yLimit; j++) {
+				Position p = new Position(i, j);
+				cellMap.put(p, new LawnCell(p));
 			}
 		}
 	}
@@ -28,7 +30,8 @@ public class Lawn {
 	}
 	
 	public LawnCell getCell(Position position){
-		return grid[position.getX()][position.getY()];
+		//return grid[position.getX()][position.getY()];
+		return cellMap.get(position);
 	}
 
 	public boolean contains(Position position) {
@@ -45,10 +48,10 @@ public class Lawn {
 	}
 
 	public int getGridSize() {
-		return grid.length;
+		return cellMap.size();
 	}
 	
-	public LawnCell[][] getGrid(){
-		return grid;
+	public HashMap<Position, LawnCell> getGrid(){
+		return cellMap;
 	}
 }

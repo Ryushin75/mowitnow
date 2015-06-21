@@ -24,6 +24,7 @@ public class MowItNow {
 				MowerProgrammingSystem programmingSystem = mowingService
 						.parseSettings(settings);
 				programmingSystem.execute();
+				programmingSystem.printMowersPositions();
 			}
 		} catch (ParameterException e) {
 			LOG.error(e.getMessage());
