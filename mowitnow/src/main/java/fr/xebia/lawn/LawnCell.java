@@ -1,5 +1,13 @@
 package fr.xebia.lawn;
 
+/**
+ * 
+ * @author aymen
+ * A lawn cell represented by three attributes
+ * it's position in the lawn
+ * a boolean if this cell was lawned
+ * a boolean if this cell is occupied by a mower 
+ */
 
 public class LawnCell {
 	private final Position position;

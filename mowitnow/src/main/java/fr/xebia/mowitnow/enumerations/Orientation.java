@@ -2,6 +2,11 @@ package fr.xebia.mowitnow.enumerations;
 
 import com.google.common.collect.Iterators;
 
+/**
+ * 
+ * @author aymen
+ * Enumeration of all possible orientation with their  left and right neighbor
+ */
 
 public enum Orientation {
 	North("N", "W", "E","North"),

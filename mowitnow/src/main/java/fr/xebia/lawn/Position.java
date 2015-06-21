@@ -5,7 +5,7 @@ package fr.xebia.lawn;
 /**
  * 
  * @author aymen
- *
+ *	Position class with two coordinates x and y
  */
 
 public class Position {

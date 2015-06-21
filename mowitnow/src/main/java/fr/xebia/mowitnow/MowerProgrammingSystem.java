@@ -15,7 +15,8 @@ import fr.xebia.mowitnow.mow.Mower;
 /**
  * 
  * @author aymen
- *
+ * 
+ * Class in charge of running mowers's commands
  */
 
 public class MowerProgrammingSystem implements Observer {
@@ -34,6 +35,10 @@ public class MowerProgrammingSystem implements Observer {
 			this.lawn.getCell(pair.getLeft().getPosition()).setOccupied(true);
 		}
 	}
+	
+	/**
+	 * Execute mowers command
+	 */
 
 	public void execute() {
 		for (Pair<Mower, Queue<Command>> pair : pairs) {
@@ -57,6 +62,9 @@ public class MowerProgrammingSystem implements Observer {
 		return pairs;
 	}
 	
+	/**
+	 * Print mowers position to console 
+	 */
 	public void printMowersPositions(){
 		for (Pair<Mower, Queue<Command>> pair : pairs) {
 			Mower mower = pair.getLeft();

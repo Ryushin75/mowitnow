@@ -3,6 +3,12 @@ package fr.xebia.lawn;
 import java.util.HashMap;
 
 
+/**
+ * 
+ * @author aymen
+ * Lawn class represented by an height (yLimit) and a width (yLimit)
+ * cellMap represents a grid of all the lawn's cell
+ */
 public class Lawn {
 	private final int xLimit;
 	private final int yLimit;
@@ -30,7 +36,6 @@ public class Lawn {
 	}
 	
 	public LawnCell getCell(Position position){
-		//return grid[position.getX()][position.getY()];
 		return cellMap.get(position);
 	}
 

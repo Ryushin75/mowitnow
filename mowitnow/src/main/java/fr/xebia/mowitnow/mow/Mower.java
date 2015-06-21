@@ -11,6 +11,11 @@ import fr.xebia.lawn.Position;
 import fr.xebia.mowitnow.enumerations.Command;
 import fr.xebia.mowitnow.enumerations.Orientation;
 
+/**
+ * 
+ * @author aymen
+ * Mower class contains all the logic to move the mower and mow the lawn
+ */
 public class Mower extends Observable implements Mowable {
 
 	private static final Logger LOG = Logger.getLogger(Mower.class);

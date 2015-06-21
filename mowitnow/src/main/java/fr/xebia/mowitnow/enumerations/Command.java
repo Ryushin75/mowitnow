@@ -2,6 +2,11 @@ package fr.xebia.mowitnow.enumerations;
 
 import com.google.common.collect.Iterators;
 
+/**
+ * 
+ * @author aymen
+ *	Enumeration of all possible commands
+ */
 public enum Command {
 	Avance("A"),
 	Droite("D"),
