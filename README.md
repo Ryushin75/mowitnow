@@ -1,2 +1,2 @@
 # mowitnow
-Xebia mow it now project
+Xebia's Mow it now technical project
