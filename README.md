@@ -10,9 +10,11 @@ Xebia's Mow it now technical project
 
 ###Options are :
 
-    ** -c ** || **--charset** to specify a charset
-    ** -i ** || **--input** to specify an input file otherwise command should be entered via console
+    -c || --charset to specify a charset
+    -i || --input   to specify an input file otherwise command should be entered via console
+    
 
+###Subject
 La société MowItNow a décidé de développer une tondeuse à gazon automatique, destinée aux 
 surfaces rectangulaires.
 
