@@ -30,6 +30,11 @@ import fr.xebia.mowitnow.enumerations.Command;
 import fr.xebia.mowitnow.enumerations.Orientation;
 import fr.xebia.mowitnow.mow.Mower;
 
+/*
+ * 
+ * Main parser class, parse from console or files using a Settings object
+ */
+
 public class MowingParserService {
 	private static final Logger LOG = Logger.getLogger(MowingParserService.class);
 	private static final String SEPARATOR = " ";
@@ -43,6 +48,7 @@ public class MowingParserService {
 	private final Parser<String, Queue<Command>> commandParser;
 	private final Parser<String, Mower> mowerParser;
 	private final Parser<String, Lawn> lawnParser;
+
 	
 	public MowingParserService() {
 		// Generate parser using lambda
