@@ -31,6 +31,8 @@ public class MowItNow {
 			jc.usage();
 		} catch (IOException e) {
 			LOG.error(e.getMessage());
-		} 
+		} catch(IllegalStateException e){
+			LOG.error(e.getMessage());
+		}
 	}
 }

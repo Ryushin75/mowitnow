@@ -12,6 +12,12 @@ import fr.xebia.lawn.Lawn;
 import fr.xebia.mowitnow.enumerations.Command;
 import fr.xebia.mowitnow.mow.Mower;
 
+/**
+ * 
+ * @author aymen
+ *
+ */
+
 public class MowerProgrammingSystem implements Observer {
 	private final static Logger LOG = Logger
 			.getLogger(MowerProgrammingSystem.class);
@@ -40,7 +46,7 @@ public class MowerProgrammingSystem implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		Mower mow = (Mower) o;
-		LOG.debug(mow.toString());
+		LOG.debug("Mower notified his position to : " + mow.toString());
 	}
 	
 	public Lawn getLawn() {
@@ -54,7 +60,7 @@ public class MowerProgrammingSystem implements Observer {
 	public void printMowersPositions(){
 		for (Pair<Mower, Queue<Command>> pair : pairs) {
 			Mower mower = pair.getLeft();
-			System.out.println(mower);
+			System.out.println("Mover id = " +mower.getId() + " position = " + mower);
 		}
 	}
 }

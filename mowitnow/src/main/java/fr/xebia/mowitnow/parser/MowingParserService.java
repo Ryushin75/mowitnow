@@ -1,5 +1,7 @@
 package fr.xebia.mowitnow.parser;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,8 +14,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
-
-import static com.google.common.base.Preconditions.checkArgument;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
@@ -84,14 +84,17 @@ public class MowingParserService {
 		return parseInput(settings.getInputFileName());
 	}
 
-	private MowerProgrammingSystem parseInput(String inputFileName) throws IOException,FileNotFoundException {
+	private MowerProgrammingSystem parseInput(String inputFileName) throws IOException,FileNotFoundException,IllegalStateException {
 		if (StringUtils.isNotEmpty(inputFileName)) {
 			return parseFile(inputFileName);
 		} else {
-			throw new NoSuchMethodError("Soon...");
+			return parseStream();
 		}
 	}
 
+	private MowerProgrammingSystem parseStream() throws IllegalStateException {
+		return parse(System.in);
+	}
 	private void parseCharset(String charsetName) {
 		if (StringUtils.isNotEmpty(charsetName)) {
 			try {
@@ -108,7 +111,7 @@ public class MowingParserService {
 		}
 	}
 
-	private MowerProgrammingSystem parseFile(String inputFileName) throws IOException,FileNotFoundException{
+	private MowerProgrammingSystem parseFile(String inputFileName) throws IOException,FileNotFoundException,IllegalStateException{
 		try (InputStream in = new FileInputStream(inputFileName);) {
 			return parse(in);
 		} catch (FileNotFoundException e) {
@@ -122,7 +125,7 @@ public class MowingParserService {
 		}
 	}
 
-	private MowerProgrammingSystem parse(InputStream in) {
+	private MowerProgrammingSystem parse(InputStream in) throws IllegalStateException {
 		try (Scanner sc = new Scanner(in, charset.name())) {
 			
 			// Parse Lawn height and weight
