@@ -1,9 +1,15 @@
 package fr.xebia.mowitnow.mow;
 
-import fr.xebia.mowitnow.lawn.Lawn;
+/**
+ * 
+ * @author aymen
+ * Interface Mowable define 3 methods that allow an object to move on a surface T
+ *
+ * @param <T> The surface to move on
+ */
 
-public interface Mowable {
+public interface Mowable<T> {
 	public void turnRight();
 	public void turnLeft();
-	public void moveForward(Lawn lawn);
+	public void moveForward(T lawn);
 }

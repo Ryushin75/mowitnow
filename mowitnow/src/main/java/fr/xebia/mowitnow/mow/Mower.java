@@ -16,7 +16,7 @@ import fr.xebia.mowitnow.lawn.Position;
  * @author aymen
  * Mower class contains all the logic to move the mower and mow the lawn
  */
-public class Mower extends Observable implements Mowable {
+public class Mower extends Observable implements Mowable<Lawn> {
 
 	private static final Logger LOG = Logger.getLogger(Mower.class);
 
@@ -119,7 +119,8 @@ public class Mower extends Observable implements Mowable {
 		Objects.requireNonNull(lawn);
 		LOG.debug("Starting Mowing programmation...");
 		mow(lawn);
-		for (Command cmd : commands) {
+		while(!commands.isEmpty()){
+			Command cmd = commands.poll();
 			switch (cmd) {
 			case Avance:
 				moveForward(lawn);
@@ -132,6 +133,7 @@ public class Mower extends Observable implements Mowable {
 				break;
 			default:
 				throw new IllegalArgumentException("Unvalid argument" + cmd);
+
 			}
 		}
 		LOG.debug("Mowing programmation ended, Mower with id " + id
