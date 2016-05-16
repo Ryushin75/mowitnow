@@ -45,11 +45,34 @@ public class Lawn {
 	}
 	
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cellMap == null) ? 0 : cellMap.hashCode());
+		result = prime * result + xLimit;
+		result = prime * result + yLimit;
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
-		if(!(obj instanceof Lawn ))
-    		return false;
-		Lawn lawn = (Lawn) obj;
-		return xLimit == lawn.getxLimit() && yLimit == lawn.getyLimit();
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Lawn))
+			return false;
+		Lawn other = (Lawn) obj;
+		if (cellMap == null) {
+			if (other.cellMap != null)
+				return false;
+		} else if (!cellMap.equals(other.cellMap))
+			return false;
+		if (xLimit != other.xLimit)
+			return false;
+		if (yLimit != other.yLimit)
+			return false;
+		return true;
 	}
 
 	public int getGridSize() {
