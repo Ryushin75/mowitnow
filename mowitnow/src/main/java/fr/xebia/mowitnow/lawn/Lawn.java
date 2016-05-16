@@ -75,6 +75,12 @@ public class Lawn {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Lawn [xLimit=" + xLimit + ", yLimit=" + yLimit + ", cellMap="
+				+ cellMap + "]";
+	}
+
 	public int getGridSize() {
 		return cellMap.size();
 	}
