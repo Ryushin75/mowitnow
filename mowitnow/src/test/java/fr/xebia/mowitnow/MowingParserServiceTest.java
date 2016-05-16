@@ -137,9 +137,14 @@ public class MowingParserServiceTest {
 		MowerProgrammingSystem mowerProgrammingSystem = mowingParserService
 				.parseSettings(settings);
 		Assert.assertEquals(2, mowerProgrammingSystem.getPairs().size());
-		Assert.assertEquals(new Lawn(5, 5), mowerProgrammingSystem.getLawn());
 		Mower mower1 = mowerProgrammingSystem.getPairs().get(0).getLeft();
 		Mower mower2 = mowerProgrammingSystem.getPairs().get(1).getLeft();
+		
+		Lawn lawn = new Lawn(5, 5);
+		lawn.getCell(mower1.getPosition()).setOccupied(true);
+		lawn.getCell(mower2.getPosition()).setOccupied(true);
+		Assert.assertEquals(lawn, mowerProgrammingSystem.getLawn());
+	
 		
 		Assert.assertTrue(mowerProgrammingSystem.getLawn().getCell(mower1.getPosition()).isOccupied());
 		Assert.assertTrue(mowerProgrammingSystem.getLawn().getCell(mower2.getPosition()).isOccupied());
